@@ -19,11 +19,13 @@ import CounterExample from './counter-example'
 import FetchData from './fetch-data'
 import HomePage from './home-page'
 import NavMenu from './nav-menu'
+import Test from './test'
 
 Vue.component('counter-example', CounterExample);
 Vue.component('fetch-data', FetchData);
 Vue.component('home-page', HomePage);
 Vue.component('nav-menu', NavMenu);
+Vue.component('test', Test);
 
 export default {
     data() {
