@@ -7,7 +7,7 @@ module.exports = (env) => {
     const isDevBuild = !(env && env.prod);
     return [{
         stats: { modules: false },
-        entry: { 'main': './ClientApp/boot-app.js' },
+        entry: { 'babel-polyfill':'babel-polyfill', 'main': './ClientApp/boot-app.js' },
         resolve: {
             extensions: ['.js', '.vue'],
             alias: {

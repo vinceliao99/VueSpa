@@ -9,12 +9,15 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "babel-polyfill": "^6.26.0",
     "core-js": "^2.4.1",
+    "element-ui": "^2.0.10",
     "font-awesome": "^4.6.3",
     "vue": "^2.1.8",
-    "vue-template-compiler": "^2.1.8",
     "vue-router": "^2.1.1",
     "vue-server-renderer": "^2.1.8",
+    "vue-template-compiler": "^2.1.8",
+    "vuetify": "^0.17.6",
     "vuex": "^2.1.1",
     "vuex-router-sync": "^4.0.1"
   },
