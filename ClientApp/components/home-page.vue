@@ -1,39 +1,52 @@
 <template>
-    <div>
-        <h1>Hello, world!</h1>
-        <p>Welcome to your new single-page application, built with:</p>
-        <ul>
-            <li><a href="https://get.asp.net/">ASP.NET Core</a> and <a href="https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx">C#</a>                    for cross-platform server-side code</li>
-            <li><a href="https://vuejs.org/">Vue.js</a> and <a href="http://www.typescriptlang.org/">TypeScript</a>                    for client-side code</li>
-            <li><a href="https://webpack.github.io/">Webpack</a> for building and bundling client-side resources</li>
-            <li><a href="http://getbootstrap.com/">Bootstrap</a> for layout and styling</li>
-            <li><a href="api/SampleData/WeatherForecasts">API sample data</a> from the dotnet controller</li>
-        </ul>
-        <p>To help you get started, we've also set up:</p>
-        <ul>
-            <li><strong>Client-side navigation</strong>. For example, click <em>Counter</em> then <em>Back</em> to return
-                here.</li>
-            <li><strong>Webpack dev middleware</strong>. In development mode, there's no need to run the <code>webpack</code>                    build tool. Your client-side resources are dynamically built on demand. Updates are available as soon
-                as you modify any file.</li>
-            <li><strong>Hot module replacement</strong>. In development mode, you don't even need to reload the page after
-                making most changes. Within seconds of saving changes to files, your Vue.js app will be rebuilt and
-                a new instance injected is into the page.</li>
-            <li><strong>Code splitting and lazy loading</strong>. Vue.js components may optionally be bundled individually and
-                loaded on demand. For example, the code and template for 'Counter' is not loaded until you navigate to
-                it..</li>
-            <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled,
-                and the <code>webpack</code> build tool produces minified static CSS and JavaScript files.</li>
-        </ul>
-    </div>
+    <v-layout column>
+        <v-flex xs12 sm8 offset-sm2>
+            <v-container fluid grid-list-md class="grey lighten-4">
+                <v-layout row wrap>
+                    <v-flex v-bind="{ [`xs${card.flex}`]: true }"
+                            v-for="card in cards"
+                            :key="card.title">
+                        <v-card>
+                            <v-card-media :src="card.src"
+                                          height="200px">
+                                <v-container fill-height fluid>
+                                    <v-layout fill-height>
+                                        <v-flex xs12 align-end flexbox>
+                                            <span class="headline white--text" v-text="card.title"></span>
+                                        </v-flex>
+                                    </v-layout>
+                                </v-container>
+                            </v-card-media>
+                            <v-card-actions class="white">
+                                <v-spacer></v-spacer>
+                                <v-btn icon>
+                                    <v-icon>favorite</v-icon>
+                                </v-btn>
+                                <v-btn icon>
+                                    <v-icon>bookmark</v-icon>
+                                </v-btn>
+                                <v-btn icon>
+                                    <v-icon>share</v-icon>
+                                </v-btn>
+                            </v-card-actions>
+                        </v-card>
+                    </v-flex>
+                </v-layout>
+            </v-container>
+        </v-flex>
+    </v-layout>
 </template>
 
 <script>
-export default {
-    data() {
-        return {
-        }
-    },
-}
+    export default {
+        data: () => ({
+            cards: [
+                { title: '123', src: '/static/doc-images/cards/house.jpg', flex: 12 },
+                { title: 'Favorite road trips', src: '/static/doc-images/cards/road.jpg', flex: 6 },
+                { title: 'Best airlines', src: '/static/doc-images/cards/plane.jpg', flex: 6 }
+            ]
+        })
+    }
 </script>
 
 <style>
