@@ -18,10 +18,12 @@ import Vue from 'vue'
 import HomePage from './home-page'
 import NavMenu from './nav-menu'
 import NewInvoice from './new-invoice/new-invoice'
+import Category from './maintenance/category/category'
 
 Vue.component('home-page', HomePage);
 Vue.component('nav-menu', NavMenu);
 Vue.component('new-invoice', NewInvoice);
+Vue.component('category', Category);
 
 export default {
     data() {

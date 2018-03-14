@@ -1,7 +1,8 @@
 import "babel-polyfill";
 import Vue from 'vue'
 import Vuetify from 'vuetify'
-import ('vuetify/dist/vuetify.min.css')
+import('vuetify/dist/vuetify.min.css')
+import('font-awesome/css/font-awesome.css')
 import axios from 'axios'
 import router from './router'
 import store from './store'

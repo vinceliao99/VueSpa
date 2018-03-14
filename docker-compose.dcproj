@@ -3,10 +3,10 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.0</ProjectVersion>
     <DockerTargetOS>Windows</DockerTargetOS>
-    <ProjectGuid>33458107-12e0-4142-ab5e-d8069362a2a1</ProjectGuid>
+    <ProjectGuid>e8113ee7-5648-404f-b866-02a661844e74</ProjectGuid>
     <DockerLaunchBrowser>True</DockerLaunchBrowser>
     <DockerServiceUrl>http://{ServiceIPAddress}</DockerServiceUrl>
-    <DockerServiceName>mpr</DockerServiceName>
+    <DockerServiceName>mbp</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

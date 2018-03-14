@@ -1,7 +1,7 @@
 {
   "name": "aspnetcore-vuejs",
-  "description": "ASP.NET Core & VueJS Starter project",
-  "author": "Mark Pieszak",
+  "description": "ASP.NET Core & VueJS MBP project",
+  "author": "Kingston",
   "scripts": {
     "dev": "cross-env ASPNETCORE_ENVIRONMENT=Development NODE_ENV=development dotnet run",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
@@ -12,12 +12,12 @@
     "babel-polyfill": "^6.26.0",
     "core-js": "^2.4.1",
     "element-ui": "^2.0.10",
-    "font-awesome": "^4.6.3",
+    "font-awesome": "^4.7.0",
     "vue": "^2.1.8",
     "vue-router": "^2.1.1",
     "vue-server-renderer": "^2.1.8",
     "vue-template-compiler": "^2.1.8",
-    "vuetify": "^0.17.6",
+    "vuetify": "^1.0.7",
     "vuex": "^2.1.1",
     "vuex-router-sync": "^4.0.1"
   },

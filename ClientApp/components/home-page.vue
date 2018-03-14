@@ -1,7 +1,7 @@
 <template>
     <v-layout column>
         <v-flex xs12 sm8 offset-sm2>
-            <v-container fluid grid-list-md class="grey lighten-4">
+            <!--<v-container fluid grid-list-md class="grey lighten-4">
                 <v-layout row wrap>
                     <v-flex v-bind="{ [`xs${card.flex}`]: true }"
                             v-for="card in cards"
@@ -32,12 +32,12 @@
                         </v-card>
                     </v-flex>
                 </v-layout>
-            </v-container>
+            </v-container>-->
         </v-flex>
     </v-layout>
 </template>
 
-<script>
+<!--<script>
     export default {
         data: () => ({
             cards: [
@@ -50,4 +50,4 @@
 </script>
 
 <style>
-</style>
+</style>-->

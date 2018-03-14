@@ -7,24 +7,57 @@
                     <v-container fill-height fluid>
                         <v-layout fill-height>
                             <v-flex xs12 align-end flexbox>
-                                <span class="headline">New Invoice</span>
-                                <i class="fa fa-camera-retro"></i>
+                                <span class="headline">Category</span>
                             </v-flex>
                         </v-layout>
                     </v-container>
                 </v-card-media>
-                <v-card-title>
+                <div>
+                    <v-tabs centered
+                            v-model="currentItem"
+                            color="transparent"
+                            slider-color="yellow"
+                            slot="extension">
+                        <v-tab v-for="item in items"
+                               :key="item"
+                               :href="'#tab-' + item">
+                            {{ item }}
+                        </v-tab>
+                    </v-tabs>
+                    <v-tabs-items v-model="currentItem">
+                        <v-tab-item v-for="item in items.concat(more)"
+                                    :key="item"
+                                    :id="'tab-' + item">
+                            <v-card flat>
+                                <v-card-text>
+                                    <h2>{{ item }}</h2>
+                                    {{ text }}
+                                </v-card-text>
+                            </v-card>
+                        </v-tab-item>
+                    </v-tabs-items>
+                </div>
+
+
+                <!--<v-card-title>
                     <div>
                         <span class="grey--text">Number 10</span><br>
                         <span>Whitehaven Beach</span><br>
                         <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</span>
                     </div>
                 </v-card-title>
+                <v-card-text>
+                    v-card-text
+                </v-card-text>
+
                 <v-card-actions>
                     <v-btn flat color="brown darken-4">Share</v-btn>
                     <v-btn flat color="brown darken-4">Explore</v-btn>
-                </v-card-actions>
+                </v-card-actions>-->
             </v-card>
         </v-flex>
     </v-layout>
 </template>
+
+<script src="./category_code.js"></script>
+
