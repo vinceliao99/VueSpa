@@ -8,7 +8,6 @@
                 <router-view></router-view>
             </div>
         </v-app>
-
     </div>
 
 </template>

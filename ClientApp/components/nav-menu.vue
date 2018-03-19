@@ -2,7 +2,7 @@
     <v-toolbar style="background-color:#3b3a36" dark>
         <!--<v-toolbar-side-icon></v-toolbar-side-icon>-->
         <v-toolbar-title>MBP&nbsp;&nbsp;&nbsp;</v-toolbar-title>
-        <v-menu :nudge-width="100">
+        <v-menu :nudge-width="100" offset-y>
             <v-toolbar-title slot="activator">
                 <span class="grey--text text--lighten-2">
                     Maintenance
