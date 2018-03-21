@@ -12,7 +12,6 @@ export default {
                         isActive: true,
                         isLoading: false,
                         isValid: true,
-                        errMsg: ''
                     },
                     {
                         categoryID: 2,
@@ -20,7 +19,6 @@ export default {
                         isActive: true,
                         isLoading: false,
                         isValid: true,
-                        errMsg: ''
                     },
                     {
                         categoryID: 3,
@@ -28,15 +26,21 @@ export default {
                         isActive: true,
                         isLoading: false,
                         isValid: true,
-                        errMsg: ''
                     },
                     {
-                        categoryID: 3,
+                        categoryID: 4,
                         categoryName: 'Non-Channel Marketing B2B',
                         isActive: true,
                         isLoading: false,
                         isValid: true,
-                        errMsg: ''
+                    }
+                    ,
+                    {
+                        categoryID: 5,
+                        categoryName: 'Non-Channel Marketing B2B',
+                        isActive: true,
+                        isLoading: false,
+                        isValid: true,
                     }
                 ]
             },
@@ -45,35 +49,31 @@ export default {
                 categories: [
                     {
                         categoryID: 1,
-                        categoryName: 'Channel-Marketing 1',
+                        categoryName: 'Channel-Marketing Disabled',
                         isActive: false,
                         isLoading: false,
                         isValid: true,
-                        errMsg: ''
                     },
                     {
                         categoryID: 2,
-                        categoryName: 'Non-Channel Marketing HyperX 1',
+                        categoryName: 'Non-Channel Marketing HyperX Disabled',
                         isActive: false,
                         isLoading: false,
                         isValid: true,
-                        errMsg: ''
                     },
                     {
                         categoryID: 3,
-                        categoryName: 'Non-Channel Marketing B2C 1',
+                        categoryName: 'Non-Channel Marketing B2C Disabled',
                         isActive: false,
                         isLoading: false,
                         isValid: true,
-                        errMsg: ''
                     },
                     {
                         categoryID: 3,
-                        categoryName: 'Non-Channel Marketing B2B 1',
+                        categoryName: 'Non-Channel Marketing B2B Disabled',
                         isActive: false,
                         isLoading: false,
                         isValid: true,
-                        errMsg: ''
                     }
                 ]
             }
@@ -86,6 +86,10 @@ export default {
             categoryNameRules: [
                 v => !!v || 'Category is required',
             ]
+        },
+        warningToast: {
+            isOpen: false,
+            message: ''
         }
     }),
     methods: {
@@ -117,7 +121,9 @@ export default {
                     this.tabsItems[0].categories.push({
                         categoryID: 4,
                         categoryName: this.newCategoryModal.categoryName,
-                        isActive: true
+                        isActive: true,
+                        isLoading: false,
+                        isValid: true,
                     });
                     //Close modal
                     this.closeNewCategoryModal();
@@ -125,24 +131,38 @@ export default {
             }
         },
         //Categories Lines
-        saveCategory: function (category, index, previousState) {
+        saveCategory: function (index, previousState) {
             //Validation
+            let category = this.tabsItems[0].categories[index];
 
+            this.warningToast.isOpen = false;
             category.isLoading = true;
+            category.isValid = true;
             //Send to backend
             setTimeout(() => {
                 //axios.post('/api/submit', {
                 //})
                 //Show loading animation
                 category.isLoading = false;
+
+                //Test purpose
+                console.log(category.categoryName);
+                if (category.categoryName === 'Non-Channel Marketing B2B') {
+                    this.warningToast.isOpen = true;
+                    this.warningToast.message = `"${category.categoryName}" already exists`;
+                    category.isValid = false;
+                }
+
+                //State Transition
                 if (previousState == 'Active') {
                     //Active -> Disabled : Remove and Add to Disabled
                     if (category.isActive == false) {
                         this.tabsItems[0].categories.splice(index, 1);
                         this.tabsItems[1].categories.push(category);
                     }
-                }
+                }  
                 else {
+                    //Disabled Tab
                     //Disabled -> Active : Remove and Add to Active
                     if (category.isActive == true) {
                         this.tabsItems[1].categories.splice(index, 1);
@@ -155,4 +175,4 @@ export default {
 
     }
 }
-}
+

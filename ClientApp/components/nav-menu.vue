@@ -15,9 +15,9 @@
                         Category
                     </v-list-tile-title>
                 </v-list-tile>
-                <v-list-tile v-on:click="goto('new-invoice')">
+                <v-list-tile v-on:click="goto('test')">
                     <v-list-tile-title>
-                        New&nbsp;Invoice
+                        Test
                     </v-list-tile-title>
                 </v-list-tile>
             </v-list>

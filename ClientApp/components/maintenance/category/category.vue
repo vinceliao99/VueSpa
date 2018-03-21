@@ -1,6 +1,6 @@
 <template>
-    <v-layout>
-        <v-flex xs12 sm8 offset-sm2>
+    <v-layout row>
+        <v-flex xs8 offset-xs2>
             <v-card class="mt-5">
                 <v-toolbar extended
                            flat
@@ -37,7 +37,12 @@
                         <v-tab-item v-for="tab in tabsItems"
                                     :key="tab.title"
                                     :id="'tab-' + tab.title">
-
+                            <v-alert type="warning"
+                                     dismissible
+                                     v-model="warningToast.isOpen"
+                                     class="mt-0">
+                                {{ warningToast.message }}
+                            </v-alert>
                             <br />
                             <v-card-text>
                                 <v-layout row wrap class="text-xs-center grey--text">
@@ -51,25 +56,21 @@
                                 </v-layout>
                                 <div v-for="(category, index) in tab.categories" class="d-flex">
                                     <v-layout row wrap class="text-xs-center">
-                                        <!--<v-flex xs1 offset-xs1 text-xs-right d-flex>
-                                            <v-tooltip left v-show="!category.isValid" class="mt-2">
-                                                <v-icon dark color="warning" slot="activator">fa fa-exclamation-circle</v-icon>
-                                                <span>{{category.errMsg}}</span>
-                                            </v-tooltip>
-                                        </v-flex>-->
                                         <v-flex xs1 offset-xs2>
-                                            <v-btn flat icon color="icon-brown"
-                                                   :loading="category.isLoading"
-                                                   :disabled="category.isLoading"
-                                                   v-on:click="saveCategory(category, index, tab.title)">
-                                                <v-icon medium>fa fa-save</v-icon>
-                                            </v-btn>
+                                            <v-badge left overlap color="warning">
+                                                <span slot="badge" v-if="!category.isValid">!</span>
+                                                <v-btn flat icon color="icon-brown"
+                                                       :loading="category.isLoading"
+                                                       :disabled="category.isLoading"
+                                                       v-on:click="saveCategory(index, tab.title)">
+                                                    <v-icon medium>fa fa-save</v-icon>
+                                                </v-btn>
+                                            </v-badge>
                                         </v-flex>
-
                                         <v-flex xs6>
                                             <!-- category text field -->
                                             <v-text-field label="Category"
-                                                          :value="category.categoryName"
+                                                          v-model="category.categoryName"
                                                           :rules="[v => !!v || 'category name is required']"></v-text-field>
                                         </v-flex>
                                         <v-flex xs1>
@@ -78,18 +79,10 @@
                                                       color="secondary-cyan"
                                                       class="pl-4 pt-3"></v-switch>
                                         </v-flex>
-                                        <v-flex xs1>
-                                            <v-tooltip left v-show="!category.isValid" class="mt-2">
-                                                <v-icon dark color="warning" slot="activator">fa fa-exclamation-circle</v-icon>
-                                                <span>{{category.errMsg}}</span>
-                                            </v-tooltip>
-                                        </v-flex>
                                     </v-layout>
                                 </div>
                                 <br />
-
                             </v-card-text>
-
                         </v-tab-item>
                     </v-tabs-items>
                 </div>
@@ -115,13 +108,25 @@
                                        v-on:click="addNewCategory()">
                                     Submit
                                 </v-btn>
+                                <v-btn flat color="action-brown"
+                                       v-on:click="closeNewCategoryModal()">
+                                    Cancel
+                                </v-btn>
                             </v-card-actions>
                         </v-card>
                     </v-form>
                 </v-dialog>
+                <!--<v-snackbar :timeout=99999
+                            color="amber"
+                            v-model="warningToast.isOpen"
+                            class="mt-5">
+                    {{ warningToast.message }}
+                    <v-btn flat @click.native="warningToast.isOpen = false">Close</v-btn>
+                </v-snackbar>-->
             </v-card>
         </v-flex>
     </v-layout>
+
 </template>
 <script src="./category_code.js"></script>
 <style>

@@ -5,5 +5,5 @@ import Category from 'components/maintenance/category/category'
 export const routes = [
     { path: '/', component: HomePage, display: 'Home' },
     { path: '/category', component: Category, display: 'Category' },
-    { path: '/new-invoice', component: NewInvoice, display: 'New Invoice'}
+    { path: '/new-invoice', component: NewInvoice, display: 'Test'}
 ]
